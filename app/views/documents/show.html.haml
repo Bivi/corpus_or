@@ -1,0 +1,21 @@
+=content_for :menu do
+  =render :partial=> "menu"
+  %hr
+  %ul.menu
+    %li= link_to "Editer", edit_document_path(@document)
+    %li= link_to 'Suppr',  @document, :confirm => 'Are you sure?', :method => :delete
+    %li= link_to 'Retour', documents_path(:doc_type=>@document.doc_type)
+
+=content_for :page do
+  -form_tag @document, :method => :put do
+    =preserve text_area_tag 'document[content]',  @document.content, :style=>"display:none;"
+    %div.redcloth= @document.to_html
+
+
+
+  %br
+  %br
+  %br
+  %hr
+  %p=@document.meta.inspect
+  %hr

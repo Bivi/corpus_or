@@ -1,0 +1,18 @@
+development:
+  host: localhost
+  port: 5984
+  database: corpus_dev
+  version: 0.80
+  bulk_save: false
+test:
+  host: localhost
+  port: 5984
+  database: corpus_test
+  version: 0.80
+  bulk_save: false
+production:
+  host: localhost
+  port: 5984
+  database: corpus_prod
+  version: 0.80
+  bulk_save: false

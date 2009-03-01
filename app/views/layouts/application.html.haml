@@ -1,0 +1,162 @@
+!!! XML
+!!!
+%html
+  %head
+    %link{ :rel  => 'shortcut icon', :href => "/images/favicon.ico", :type => 'image/vnd.microsoft.icon' }
+    %title Corpus or
+    /= stylesheet_link_tag "ext/resources/css/ext-all.css"
+    /= javascript_include_tag "ext/adapter/ext/ext-base.js"
+    /= javascript_include_tag Rails.env.development? ? "ext/ext-all-debug.js" : "ext/ext-all.js"
+    /= javascript_include_tag "application_layout.js"
+    /= javascript_tag("Ext.BLANK_IMAGE_URL = '#{image_path('/ext/resources/images/default/s.gif')}';")
+    %style
+      :sass
+        !text_color = black
+        !text_back = white
+        !text_readonly = #f4f4f4
+        !title_font_family = "'Times New Roman', 'Palatino Linotype', Serif"
+        !text_font_family =  "'Trebuchet MS', Geneva, Verdana, Arial, Helvetica, 'Century Gothic', sans-serif"
+        !mono_font_family =  "'Bitstream Vera Sans Mono','Courier',monospace"
+        !text_font_size = 10pt
+        !tonic_dark =  darkorange
+        !tonic_light = #fff1e1
+
+        !base_dark =   #314764
+        !base_medark = #547fb7
+        !base_medium = #b0c4de
+        !base_light =  #ebf0f6
+        !layout_space = 2px
+        !text_space = 1ex
+        html, body
+          :margin 0ex
+          :padding 0ex
+
+        p, ul, input, select, body
+          :font-family= !text_font_family
+          :font-size= !text_font_size
+          :color= !text_color
+
+        textarea
+          :font-family= !mono_font_family
+          :font-size= !text_font_size*0.95
+          :color= !text_color
+
+        h1, h2, h3, h4
+          :font-family= !title_font_family
+          :font-style italic
+          :color= !base_dark
+          :font-size 120%
+
+        img
+          :border 0px
+
+          &.calendar-trigger
+            :cursor pointer
+            :vertical-align middle
+            :margin-left 4px
+
+        hr
+          :border none
+          :height 1px
+          :background= !tonic_dark
+
+          &.spacer
+            :clear both
+            :height 0px
+            :width  0px
+            :margin 0em
+            :padding 0em
+
+        .inline
+          :display inline
+
+        .left
+          :text-align left
+
+        .center
+          :text-align center
+
+        .right
+          :text-align right
+
+        .framed
+          :border= 1px solid !base_medium
+
+        .noborder
+          :border= none
+        .panel
+          :padding 1ex
+        .spacer
+          :width 0px
+          :height 0px
+          :clear  both
+        ul.menu
+          :margin= 0ex
+          :padding 0ex
+          &.horiz li
+            :display inline
+          &.vert a
+            :display block
+            :height 100%
+          li
+            :list-style-type none
+            :padding= 0ex
+          ul
+            :padding-left= 2ex
+        table.index
+          :margin= !text_space
+          :padding= !layout_space
+          :empty-cells show
+          :border-collapse collapse
+
+          .left
+            :text-align left
+
+          .center
+            :text-align center
+
+          .right
+            :text-align right
+
+          th
+            :background-color= !base_medium
+            :border= 1px solid !base_medark
+            :vertical-align top
+            :padding= !layout_space
+
+          th, td
+            :border= 1px solid !base_medium
+
+          th
+            :background= !base_light
+            :text-align right
+            :font-weight normal
+            :padding-right= !text_space
+
+          td
+            :background= !text_back
+        #north-div
+          :border 1px solid
+          :text-align center
+          :background= !base_light
+          h1
+            :font-size 200%
+        #west-div
+          :border 1px solid
+          :float left
+        #center-div
+          :float left
+
+  %body
+    %div#north-div.panel
+      %h1 Corpus or
+
+    %div#west-div.panel
+      = yield :menu
+
+    %div#center-div.panel
+      = yield :page
+
+    %hr.spacer
+    %div#south-div.panel
+    %div#east-div.panel

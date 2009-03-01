@@ -1,0 +1,19 @@
+=content_for :menu do
+  =render :partial=> "menu"
+  %hr
+  %ul.menu
+    %li= link_to "Ajouter", new_document_path(:doc_type=>@doc_type_filter)
+
+=content_for :page do
+  %h1= "Liste des documents."
+
+  %table.index
+    %tr
+      %th.center Type
+      -@keys.each do |k|
+        %th.center= k
+    - @documents.each do |d|
+      %tr
+        %th.left= link_to d.doc_type, document_path(d)
+        -@keys.each do |k|
+          %td= d.meta[k]

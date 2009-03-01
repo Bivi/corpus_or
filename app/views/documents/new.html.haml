@@ -1,0 +1,9 @@
+=content_for :menu do
+  =render :partial=> "menu"
+  %hr
+  %ul.menu
+    %li= link_to "Annuler", documents_path(:doc_type=>params[:doc_type])
+
+=content_for :page do 
+  =render :partial=> "form", :object => @document
+

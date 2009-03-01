@@ -1,0 +1,4 @@
+%ul.menu
+  %li= link_to "tous (#{@documents_count})", documents_path()
+  - @menu_items.each do |m|
+    %li= link_to "#{m.doc_type} (#{m.count})", documents_path(:doc_type=>m.doc_type)

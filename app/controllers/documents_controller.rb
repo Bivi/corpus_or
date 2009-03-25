@@ -81,15 +81,16 @@ class DocumentsController < ApplicationController
     @document = Document.find(params[:id])
     attribs = params[:document]
     attribs[:meta] = params[:meta].to_hash if  params[:meta]  # Document.meta est de type Hash et non HashWithIndifferentAccess
-    if params[:new_doc_type].blank? || @document.doc_type == params[:new_doc_type]
+    attribs[:meta] = {} if params[:design_mode]
+    if params[:is_model]
+      # Génération d'un nouveau doc final à partir d'un modèle
+      @document = Document.new(attribs)
+    else
       # Modification  d'un document final ou d'un modèle
       @document.attributes = attribs
-    else
-      # Génération d'un nouveau doc final à partir d'un modèle
-      attribs[:doc_type] = params[:new_doc_type]
-      @document = Document.new(attribs)
     end
-    @document.meta2content
+#    @document.meta2content
+#    @document.content2meta
 
     respond_to do |format|
       if @document.save

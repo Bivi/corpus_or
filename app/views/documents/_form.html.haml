@@ -1,6 +1,12 @@
 - form_for(@document) do |f|
-  = f.text_field      :doc_type
+  = hidden_field_tag 'design_mode', 'true'
+  Type:
+  = f.text_field :doc_type
+  &nbsp;&nbsp;Modèle:
+  = f.check_box  :is_model
+  
   %br
+  %p Contenu:
   = f.text_area :content, :cols=>80, :rows=>32, :wrap=>"off"
   %hr
   = f.submit "OK"

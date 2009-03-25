@@ -8,12 +8,14 @@
 
 =content_for :page do
   -form_tag @document, :method => :put do
-    =preserve text_area_tag 'document[content]',  @document.content, :style=>"display:none;"
+    = hidden_field_tag 'filling_mode', 'true'
+    = preserve text_area_tag 'document[content]',  @document.content, :style=>"display:none;"
     %div.redcloth= @document.to_html
+    %br
+    %hr
+    = submit_tag @document.is_model ? "Créer" : "Sauver"
 
 
-
-  %br
   %br
   %br
   %hr

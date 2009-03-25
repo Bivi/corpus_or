@@ -4,9 +4,10 @@
   %head
     %link{ :rel  => 'shortcut icon', :href => "/images/favicon.ico", :type => 'image/vnd.microsoft.icon' }
     %title Corpus or
-    /= stylesheet_link_tag "ext/resources/css/ext-all.css"
+    = stylesheet_link_tag "ext/resources/css/ext-all.css"
     /= javascript_include_tag "ext/adapter/ext/ext-base.js"
     /= javascript_include_tag Rails.env.development? ? "ext/ext-all-debug.js" : "ext/ext-all.js"
+    = javascript_include_tag "ext/ext-all.js"
     /= javascript_include_tag "application_layout.js"
     /= javascript_tag("Ext.BLANK_IMAGE_URL = '#{image_path('/ext/resources/images/default/s.gif')}';")
     %style

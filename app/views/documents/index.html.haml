@@ -10,10 +10,12 @@
   %table.index
     %tr
       %th.center Type
+      %th.center Modèle
       -@keys.each do |k|
         %th.center= k
     - @documents.each do |d|
       %tr
         %th.left= link_to d.doc_type, document_path(d)
+        %td= d.is_model ? "oui" : ""
         -@keys.each do |k|
-          %td= d.meta[k]
+          %td= d.meta && d.meta[k]
